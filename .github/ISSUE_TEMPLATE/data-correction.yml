@@ -1,0 +1,50 @@
+name: Data correction
+description: Report a non-sensitive error or outdated public value
+title: "Data correction: "
+labels: [data-correction]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Do not include credentials, private Club IDs, personal data or private messages. Use private vulnerability reporting for sensitive material.
+
+  - type: input
+    id: record
+    attributes:
+      label: Club slug or file
+      placeholder: game-of-molly or apps-comparison.csv
+    validations:
+      required: true
+
+  - type: input
+    id: field
+    attributes:
+      label: Field
+      placeholder: peak_traffic or max_rakeback_percent
+    validations:
+      required: true
+
+  - type: input
+    id: source
+    attributes:
+      label: Public source URL
+      placeholder: https://pppoker-catalog.com/...
+    validations:
+      required: true
+
+  - type: input
+    id: observed
+    attributes:
+      label: Observation date
+      placeholder: YYYY-MM-DD
+    validations:
+      required: true
+
+  - type: textarea
+    id: correction
+    attributes:
+      label: Proposed correction
+      description: State the current value, proposed value and a short explanation.
+    validations:
+      required: true
+
