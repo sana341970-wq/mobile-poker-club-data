@@ -1,0 +1,83 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/sana341970-wq/mobile-poker-club-data/raw/main/clubs.schema.json",
+  "title": "Mobile Poker Club Data",
+  "type": "object",
+  "required": ["schema_version", "title", "snapshot_date", "license", "clubs"],
+  "properties": {
+    "$schema": {"type": "string"},
+    "schema_version": {"type": "string"},
+    "title": {"type": "string"},
+    "description": {"type": "string"},
+    "creator": {
+      "type": "object",
+      "required": ["name", "role"],
+      "properties": {"name": {"type": "string"}, "role": {"type": "string"}},
+      "additionalProperties": false
+    },
+    "publisher": {"type": "string"},
+    "website": {"type": "string", "format": "uri"},
+    "source_catalog": {"type": "string", "format": "uri"},
+    "snapshot_date": {"type": "string", "format": "date"},
+    "timezone": {"type": "string"},
+    "license": {"const": "CC-BY-4.0"},
+    "known_source_conflicts": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "field", "app", "app_page_value", "club_slug", "club_page_value", "resolution"],
+        "properties": {
+          "id": {"type": "string"},
+          "field": {"type": "string"},
+          "app": {"enum": ["PPPoker", "PokerBros", "ClubGG", "X-Poker"]},
+          "app_page_value": {"type": ["number", "string", "boolean", "null"]},
+          "club_slug": {"type": "string"},
+          "club_page_value": {"type": ["number", "string", "boolean", "null"]},
+          "resolution": {"type": "string"}
+        },
+        "additionalProperties": false
+      }
+    },
+    "clubs": {
+      "type": "array",
+      "items": {"$ref": "#/$defs/club"}
+    }
+  },
+  "$defs": {
+    "traffic": {
+      "type": "object",
+      "required": ["display", "min_players", "max_players", "open_ended"],
+      "properties": {
+        "display": {"type": "string"},
+        "min_players": {"type": "integer", "minimum": 0},
+        "max_players": {"type": ["integer", "null"], "minimum": 0},
+        "open_ended": {"type": "boolean"}
+      },
+      "additionalProperties": false
+    },
+    "club": {
+      "type": "object",
+      "required": ["slug", "name", "app", "club_id", "club_id_access", "union", "max_rakeback_percent", "peak_traffic", "games", "stakes", "countries", "nfnd", "jackpot", "source_updated_at", "source_url"],
+      "properties": {
+        "slug": {"type": "string", "pattern": "^[a-z0-9]+(?:-[a-z0-9]+)*$"},
+        "name": {"type": "string"},
+        "app": {"enum": ["PPPoker", "PokerBros", "ClubGG", "X-Poker"]},
+        "club_id": {"type": ["string", "null"]},
+        "club_id_access": {"type": "string"},
+        "union": {"type": "string"},
+        "max_rakeback_percent": {"type": "integer", "minimum": 0, "maximum": 100},
+        "peak_traffic": {"$ref": "#/$defs/traffic"},
+        "games": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "stakes": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "countries": {"type": "array", "items": {"type": "string"}, "uniqueItems": true},
+        "nfnd": {"type": "boolean"},
+        "jackpot": {"type": "boolean"},
+        "source_updated_at": {"type": "string", "format": "date"},
+        "source_url": {"type": "string", "format": "uri"}
+      },
+      "additionalProperties": false
+    }
+  },
+  "additionalProperties": false
+}
+

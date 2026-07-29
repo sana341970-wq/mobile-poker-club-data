@@ -1,0 +1,25 @@
+cff-version: 1.2.0
+message: "If you use this dataset, please cite it as below."
+title: "Mobile Poker Club Data"
+type: dataset
+version: "2026.07"
+date-released: 2026-07-29
+authors:
+  - family-names: Holden
+    given-names: James
+    affiliation: Poker Catalog
+publisher:
+  name: Poker Catalog
+license: CC-BY-4.0
+repository-code: "https://github.com/sana341970-wq/mobile-poker-club-data"
+url: "https://pppoker-catalog.com"
+abstract: "Machine-readable public listing data for mobile poker clubs across PPPoker, PokerBros, ClubGG and X-Poker."
+keywords:
+  - mobile poker
+  - poker clubs
+  - PPPoker
+  - PokerBros
+  - ClubGG
+  - X-Poker
+  - rakeback
+
