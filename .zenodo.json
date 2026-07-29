@@ -1,0 +1,29 @@
+{
+  "title": "Mobile Poker Club Data",
+  "description": "Open, machine-readable monthly dataset of public mobile poker club listings across PPPoker, PokerBros, ClubGG and X-Poker. Values reproduce the linked source pages as observed on the stated snapshot date and are not an independent real-time audit.",
+  "upload_type": "dataset",
+  "creators": [
+    {
+      "name": "Holden, James",
+      "affiliation": "Poker Catalog"
+    }
+  ],
+  "version": "2026.07.1",
+  "access_right": "open",
+  "license": "cc-by-4.0",
+  "language": "eng",
+  "keywords": [
+    "mobile poker",
+    "poker clubs",
+    "PPPoker",
+    "PokerBros",
+    "ClubGG",
+    "X-Poker",
+    "rakeback",
+    "open data"
+  ],
+  "references": [
+    "https://pppoker-catalog.com",
+    "https://github.com/sana341970-wq/mobile-poker-club-data"
+  ]
+}
