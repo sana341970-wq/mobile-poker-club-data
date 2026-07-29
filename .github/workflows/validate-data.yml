@@ -1,0 +1,60 @@
+name: Validate dataset
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: validate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@f548e57e544e1ff5a4c46bf1e1b8685f8e4a348a
+        with:
+          persist-credentials: false
+
+      - name: Validate JSON and CSV consistency
+        shell: python
+        run: |
+          import csv
+          import json
+          from pathlib import Path
+          from urllib.parse import urlparse
+
+          root = Path(".")
+          data = json.loads((root / "clubs.json").read_text(encoding="utf-8"))
+          snapshot = json.loads((root / "snapshots" / "2026-07.json").read_text(encoding="utf-8"))
+
+          with (root / "clubs.csv").open(encoding="utf-8", newline="") as stream:
+              csv_rows = list(csv.DictReader(stream))
+
+          clubs = data["clubs"]
+          slugs = [club["slug"] for club in clubs]
+          csv_slugs = [row["slug"] for row in csv_rows]
+          snapshot_slugs = [club["slug"] for club in snapshot["clubs"]]
+
+          assert len(slugs) == len(set(slugs)), "Duplicate club slug"
+          assert set(slugs) == set(csv_slugs), "clubs.json and clubs.csv differ"
+          assert set(slugs) == set(snapshot_slugs), "Monthly snapshot differs from clubs.json"
+          assert data["license"] == "CC-BY-4.0", "Unexpected license"
+          assert data["known_source_conflicts"], "Known source conflicts must remain documented"
+
+          allowed_apps = {"PPPoker", "PokerBros", "ClubGG", "X-Poker"}
+          for club in clubs:
+              assert club["app"] in allowed_apps, f"Unknown app for {club['slug']}"
+              assert 0 <= club["max_rakeback_percent"] <= 100, f"Invalid percentage for {club['slug']}"
+              source = urlparse(club["source_url"])
+              assert source.scheme == "https" and source.netloc == "pppoker-catalog.com", f"Unexpected source for {club['slug']}"
+              assert club["club_id"] is None or isinstance(club["club_id"], str)
+
+          print(f"Validated {len(clubs)} club records and {len(data['known_source_conflicts'])} documented source conflicts.")
+
