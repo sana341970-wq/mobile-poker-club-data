@@ -1,0 +1,22 @@
+{
+  "schema_version": "1.0.0",
+  "snapshot_month": "2026-07",
+  "observed_at": "2026-07-29",
+  "timezone": "Asia/Bangkok",
+  "metric": "reported peak traffic from public listing",
+  "source_catalog": "https://pppoker-catalog.com/clubs/",
+  "clubs": [
+    {"slug": "game-of-molly", "display": "350–700 players", "min_players": 350, "max_players": 700, "open_ended": false, "source_updated_at": "2026-06-18"},
+    {"slug": "777-club", "display": "400–800 players", "min_players": 400, "max_players": 800, "open_ended": false, "source_updated_at": "2026-06-18"},
+    {"slug": "the-flying-dutchman", "display": "1000+ players", "min_players": 1000, "max_players": null, "open_ended": true, "source_updated_at": "2026-07-23"},
+    {"slug": "malibu-sunsets", "display": "500+ players", "min_players": 500, "max_players": null, "open_ended": true, "source_updated_at": "2026-07-23"},
+    {"slug": "npn-massiv", "display": "1000+ players", "min_players": 1000, "max_players": null, "open_ended": true, "source_updated_at": "2026-07-22"},
+    {"slug": "machines", "display": "700+ players", "min_players": 700, "max_players": null, "open_ended": true, "source_updated_at": "2026-07-23"},
+    {"slug": "nuts", "display": "400–500+ players", "min_players": 400, "max_players": 500, "open_ended": true, "source_updated_at": "2026-07-23"},
+    {"slug": "goldfish", "display": "300–600 players", "min_players": 300, "max_players": 600, "open_ended": false, "source_updated_at": "2026-06-18"},
+    {"slug": "gambit", "display": "500+ players", "min_players": 500, "max_players": null, "open_ended": true, "source_updated_at": "2026-07-23"},
+    {"slug": "gambits-room", "display": "600+ players", "min_players": 600, "max_players": null, "open_ended": true, "source_updated_at": "2026-07-23"},
+    {"slug": "mollys-pppoker", "display": "450–900 players", "min_players": 450, "max_players": 900, "open_ended": false, "source_updated_at": "2026-06-18"}
+  ]
+}
+
