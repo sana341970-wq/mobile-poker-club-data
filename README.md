@@ -45,6 +45,12 @@ Corrections are welcome through GitHub issues or pull requests. Please include a
 
 Every pull request and update to `main` runs a read-only consistency check covering JSON syntax, duplicate slugs, source URLs and alignment between JSON, CSV and the monthly snapshot.
 
+## Dataset access
+
+- Canonical dataset page: https://pppoker-catalog.com/data/mobile-poker-club-data/
+- Hugging Face Dataset Viewer: https://huggingface.co/datasets/Poker-Catalog/mobile-poker-club-data
+- Archived release and DOI: https://doi.org/10.5281/zenodo.21716825
+
 ## Responsible use
 
 For informational and research use only. Poker laws vary by location. Users must be 18+ (or meet their local legal age), check local regulations and assess independent-agent risk before transferring funds. If gambling is causing harm, visit [GambleAware](https://www.gambleaware.org/).
